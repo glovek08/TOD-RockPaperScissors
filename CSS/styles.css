@@ -1,14 +1,80 @@
 :root {
-    --main-bg: black;
-    --main-font: white;
-    --main-accent: red;
+    --main-bg: #36382E;
+    --main-font: #EDE6E3;
+    --main-accent: #F06449;
+    --main-hover: #dc9587;
 }
 *, *::before, *::after {
     box-sizing: border-box;
+}
+html {
+    color-scheme: dark;
 }
 body {
     margin: 0;
     padding: 0;
     background: var(--main-bg);
     color: var(--main-font);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+main {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    width: 100dvw;
+    height: 100dvh;
+}
+hgroup {
+    text-align: center;
+    margin-bottom: 10px;
+}
+#picks-container {
+    background: #50504f;
+    outline: 1px solid red;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 40px;
+}
+.picks-wrapper {
+    outline: 1px solid green;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-weight: 600;
+    font-size: 1.5em;
+    margin: 5px;
+    text-align: center;
+}
+.picks-wrapper input {
+    opacity: 0;
+    position: fixed;
+    width: 0;
+}
+.picks-wrapper input:hover + label {
+    background: var(--main-hover);
+}
+.picks-wrapper input:checked + label, .picks-wrapper input:focus + label {
+    background: var(--main-accent);
+}
+
+
+.picks-wrapper label {
+    background: var(--main-font);
+    color: var(--main-bg);
+    display: inline-block;
+    cursor: pointer;
+    padding: 10px 15px;
+    min-width: 200px;
+}
+button#submit {
+    background: var(--main-accent);
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 1.5em;
+    min-width: 30%;
+    cursor: pointer;
 }
