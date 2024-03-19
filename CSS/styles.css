@@ -60,8 +60,6 @@ hgroup {
 .picks-wrapper input:checked + label, .picks-wrapper input:focus + label {
     background: var(--main-accent);
 }
-
-
 .picks-wrapper label {
     background: var(--main-font);
     color: var(--main-bg);

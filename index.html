@@ -7,6 +7,7 @@
     <meta name="theme-color" content="#36382E" />
     <title>Rock Paper Scissors</title>
     <link rel="stylesheet" href="CSS/styles.css" />
+    <script src="Javascript/script.js"></script>
 </head>
 
 <body>
@@ -20,18 +21,18 @@
         </hgroup>
         <div id="picks-container">
             <div class="picks-wrapper">
-                <input type="radio" id="user-rock" name="user-pick" value="Rock">
+                <input type="radio" id="user-rock" name="user-pick" value="ROCK">
                 <label for="user-rock">ROCK</label>
             </div>
             <div class="picks-wrapper">
-                <input type="radio" id="user-paper" name="user-pick" value="Paper">
+                <input type="radio" id="user-paper" name="user-pick" value="PAPER">
                 <label for="user-paper">PAPER</label>
             </div>
             <div class="picks-wrapper">
-                <input type="radio" id="user-scissor" name="user-pick" value="Scissor">
+                <input type="radio" id="user-scissor" name="user-pick" value="SCISSOR">
                 <label for="user-scissor">SCISSOR</label>
             </div>
-            <button id="submit" onclick="comparePicks()">SUBMIT</button>
+            <button id="submit">SUBMIT</button>
         </div>
         <div id="result"></div>
     </main>
