@@ -1,13 +1,16 @@
 /* Store the user pick from amongst three options [DONE]*/
 /* Create a variable to store a randomly generated number within 1-3 that corresponds to the computer's pick [DONE]*/
 /* Create a function that takes both variables and compares them with the following logic: 
-    Rock > Scissors, Scissors > Paper, Paper > Rock */
-/* Reset the variables and radio inputs, and return the winning player */
+    Rock > Scissors, Scissors > Paper, Paper > Rock [DONE]*/ 
+/* Reset the variables and radio inputs, and return the winning player [DONE]*/
 /*While I didn't explicitly follow the project's assignment, I added options using radio buttons in order to reduce computing and limit what the user can do.*/
+
 document.addEventListener('DOMContentLoaded', () => {
     const radioButtons = document.getElementsByName("user-pick");
     const submitButton = document.getElementById('submit');
     const resultDiv = document.getElementById('result');
+    const userScoreEl = document.getElementById('user-score');
+    const roundCountEl = document.getElementById('round-count');
     let roundCount = 0;
     let userScore = 0;
 
@@ -17,15 +20,17 @@ document.addEventListener('DOMContentLoaded', () => {
         let computerPick = getComputerPick();
         console.log(`User Pick: ${userPick}`);
         console.log(`Computer Pick: ${computerPick}`);
-        /* TODO: Control if player doens't check radio button */
-        if (roundCount >= 4) {
+        if (roundCount >= 5) { 
+        /* We should create another button to reset the match which becomes active when roundCount reaches 5
+        also disable radio buttons and submitButton till the player clicks reset. */
             submitButton.innerText = 'PLAY AGAIN!';
             resultDiv.textContent = '';
             userScore = 0;
             roundCount = 0;
+            clearContent();
+            return;
         } else {
             playSet(userPick, computerPick);
-            roundCount++;
         }
         console.log(userScore);
         clearContent();
@@ -51,17 +56,25 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
     const playSet = (userPick, computerPick) => {
+        if (!userPick) {
+            window.alert("PLEASE SELECT YOUR PICK!");
+            return;
+        }
         let roundResult = playRound(userPick, computerPick);
+        roundCount++;
+        roundCountEl.innerText = roundCount; /* We should use prepend to insert a new node at the start of the div, that way the user doesn't have to scroll down.*/
         if (roundResult === 1) {
-            resultDiv.innerHTML += `VICTORY! USER: ${userPick}, COMPUTER: ${computerPick}<br>`;
+            resultDiv.innerHTML = `<span class="victory">VICTORY! <span class="block">USER: ${userPick}</span><span class="block">COMPUTER: ${computerPick}</span></span>` + resultDiv.innerHTML;
             userScore++;
+            userScoreEl.innerText = userScore;
             return;
         } else if (roundResult === 0) {
-            resultDiv.innerHTML += `TIE! USER: ${userPick}, COMPUTER: ${computerPick}<br>`;
+            resultDiv.innerHTML = `TIE! <span class="block">USER: ${userPick}</span><span class="block">COMPUTER: ${computerPick}</span>` + resultDiv.innerHTML;
             return;
         } else {
-            resultDiv.innerHTML += `DEFEAT! USER: ${userPick}, COMPUTER: ${computerPick}<br>`;
+            resultDiv.innerHTML = `<span class="defeat">DEFEAT! <span class="block">USER: ${userPick}</span><span class="block">COMPUTER: ${computerPick}</span></span>` + resultDiv.innerHTML;
             userScore--;
+            userScoreEl.innerText = userScore;
             return;
         }
     }
@@ -95,7 +108,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const clearContent = () => {
         for (let i = 0; i < radioButtons.length; i++) {
             radioButtons[i].checked = false;
-            console.log(`Radio button #${i} unchecked.`);
         }
     }
 })

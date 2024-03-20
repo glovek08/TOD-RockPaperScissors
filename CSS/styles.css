@@ -18,6 +18,8 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
+    min-width: 100dvw;
+    min-height: 100dvh;
 }
 main {
     display: flex;
@@ -25,21 +27,20 @@ main {
     justify-content: center;
     flex-direction: column;
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    width: 100dvw;
-    height: 100dvh;
 }
 hgroup {
     text-align: center;
-    margin-bottom: 10px;
+    margin: 50px 0 0 20px;
 }
-#picks-container {
-    background: #50504f;
-    outline: 1px solid red;
+#game-container {
+    border-radius: 10px;
+    background: linear-gradient(130deg, rgb(40, 72, 127) 11%, rgb(37, 13, 78) 86%);
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
     padding: 40px;
+    margin: 20px 0 100px 0;
 }
 .picks-wrapper {
     outline: 1px solid green;
@@ -55,10 +56,12 @@ hgroup {
     width: 0;
 }
 .picks-wrapper input:hover + label {
-    background: var(--main-hover);
+    background: rgb(212,228,255);
+    background: linear-gradient(320deg, rgba(212,228,255,1) 11%, rgba(192,154,255,1) 86%); 
 }
 .picks-wrapper input:checked + label, .picks-wrapper input:focus + label {
-    background: var(--main-accent);
+    background: rgb(236,147,127);
+    background: linear-gradient(137deg, rgba(236,147,127,1) 11%, rgba(255,208,154,1) 86%); 
 }
 .picks-wrapper label {
     background: var(--main-font);
@@ -68,13 +71,8 @@ hgroup {
     padding: 10px 15px;
     min-width: 200px;
 }
-#score-container {
-    padding: 5px;
-    outline: 1px solid red;
-}
 .score-box {
     padding: 10px;
-    outline: 1px solid blue;
     min-height: 30px;
     min-width: 150px;
 }
@@ -85,4 +83,21 @@ button#submit {
     font-size: 1.5em;
     min-width: 30%;
     cursor: pointer;
+}
+#result {
+    margin-top: 10px;
+    display: block;
+    overflow: auto;
+    width: 250px;
+    height: 200px;
+    text-align: center;
+}
+.block {
+    display: block;
+}
+.victory {
+    color: rgb(141, 247, 141);
+}
+.defeat {
+    color: rgb(255, 161, 161);
 }

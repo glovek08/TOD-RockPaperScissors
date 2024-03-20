@@ -19,7 +19,7 @@
             <h1 id="main-title">ROCK PAPER SCISSORS</h1>
             <h3 id="main-sub-title">PLAY THE CLASSIC!</h3>
         </hgroup>
-        <div id="picks-container">
+        <div id="game-container">
             <div class="picks-wrapper">
                 <input type="radio" id="user-rock" name="user-pick" value="ROCK">
                 <label for="user-rock">ROCK</label>
@@ -32,11 +32,9 @@
                 <input type="radio" id="user-scissor" name="user-pick" value="SCISSOR">
                 <label for="user-scissor">SCISSOR</label>
             </div>
-            <div class="score-box">ROUND: <span id="round-count"></span></div>
-            <div class="score-box">USER SCORE: <span id="user-score"></span></div>
+            <div class="score-box">ROUND: <span id="round-count">0</span></div>
+            <div class="score-box">SCORE: <span id="user-score">0</span></div>
             <button id="submit">PLAY</button>
-        </div>
-        <div id="result-container">
             <div id="result"></div>
         </div>
     </main>
