@@ -8,11 +8,26 @@ document.addEventListener('DOMContentLoaded', () => {
     const radioButtons = document.getElementsByName("user-pick");
     const submitButton = document.getElementById('submit');
     const resultDiv = document.getElementById('result');
+    let roundCount = 0;
+    let userScore = 0;
 
     submitButton.addEventListener('click', () => {
-        console.log(`User Pick: ${getUserPick()}`);
-        console.log(`Computer Pick: ${getComputerPick()}`);
-        resultDiv.innerText = playRound(getUserPick(), getComputerPick());
+        submitButton.innerText = 'PLAY';
+        let userPick = getUserPick();
+        let computerPick = getComputerPick();
+        console.log(`User Pick: ${userPick}`);
+        console.log(`Computer Pick: ${computerPick}`);
+        /* TODO: Control if player doens't check radio button */
+        if (roundCount >= 4) {
+            submitButton.innerText = 'PLAY AGAIN!';
+            resultDiv.textContent = '';
+            userScore = 0;
+            roundCount = 0;
+        } else {
+            playSet(userPick, computerPick);
+            roundCount++;
+        }
+        console.log(userScore);
         clearContent();
     })
     const getUserPick = () => {
@@ -35,35 +50,50 @@ document.addEventListener('DOMContentLoaded', () => {
             return 'SCISSOR';
         }
     }
-    const playRound = (userPick, computerPick) => {
+    const playSet = (userPick, computerPick) => {
+        let roundResult = playRound(userPick, computerPick);
+        if (roundResult === 1) {
+            resultDiv.innerHTML += `VICTORY! USER: ${userPick}, COMPUTER: ${computerPick}<br>`;
+            userScore++;
+            return;
+        } else if (roundResult === 0) {
+            resultDiv.innerHTML += `TIE! USER: ${userPick}, COMPUTER: ${computerPick}<br>`;
+            return;
+        } else {
+            resultDiv.innerHTML += `DEFEAT! USER: ${userPick}, COMPUTER: ${computerPick}<br>`;
+            userScore--;
+            return;
+        }
+    }
+    const playRound = (userPick, computerPick) => { /* Returns 1 if user wins round, 0 if tie and -1 if computer wins.*/
         if (userPick === 'ROCK') {
             if (computerPick === 'ROCK') {
-                return `TIE! USER: ${userPick}, COMPUTER: ${computerPick}`;
+                return 0;
             } else if (computerPick === 'PAPER') {
-                return `DEFEAT! USER: ${userPick}, COMPUTER: ${computerPick}`;
+                return -1;
             } else {
-                return `VICTORY! USER: ${userPick}, COMPUTER: ${computerPick}`;
+                return 1;
             }
         } else if (userPick === 'PAPER') {
             if (computerPick === 'ROCK') {
-                return `VICTORY! USER: ${userPick}, COMPUTER: ${computerPick}`;
+                return 1;
             } else if (computerPick === 'PAPER') {
-                return `TIE! USER: ${userPick}, COMPUTER: ${computerPick}`;
+                return 0;
             } else {
-                return `DEFEAT! USER: ${userPick}, COMPUTER: ${computerPick}`;
+                return -1;
             }
         } else {
             if (computerPick === 'ROCK') {
-                return `DEFEAT! USER: ${userPick}, COMPUTER: ${computerPick}`;
+                return -1;
             } else if (computerPick === 'PAPER') {
-                return `VICTORY! USER: ${userPick}, COMPUTER: ${computerPick}`;
+                return 1;
             } else {
-                return `TIE! USER: ${userPick}, COMPUTER: ${computerPick}`;
+                return 0;
             }
         }
     }
     const clearContent = () => {
-        for(let i = 0; i < radioButtons.length; i++) {
+        for (let i = 0; i < radioButtons.length; i++) {
             radioButtons[i].checked = false;
             console.log(`Radio button #${i} unchecked.`);
         }
