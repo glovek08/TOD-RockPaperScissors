@@ -13,6 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
         console.log(`User Pick: ${getUserPick()}`);
         console.log(`Computer Pick: ${getComputerPick()}`);
         resultDiv.innerText = playRound(getUserPick(), getComputerPick());
+        clearContent();
     })
     const getUserPick = () => {
         let userPick = '';
@@ -59,6 +60,12 @@ document.addEventListener('DOMContentLoaded', () => {
             } else {
                 return `TIE! USER: ${userPick}, COMPUTER: ${computerPick}`;
             }
+        }
+    }
+    const clearContent = () => {
+        for(let i = 0; i < radioButtons.length; i++) {
+            radioButtons[i].checked = false;
+            console.log(`Radio button #${i} unchecked.`);
         }
     }
 })
