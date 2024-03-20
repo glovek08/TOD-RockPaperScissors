@@ -62,7 +62,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         let roundResult = playRound(userPick, computerPick);
         roundCount++;
-        roundCountEl.innerText = roundCount; /* We should use prepend to insert a new node at the start of the div, that way the user doesn't have to scroll down.*/
+        roundCountEl.innerText = roundCount;
         if (roundResult === 1) {
             resultDiv.innerHTML = `<span class="victory">VICTORY! <span class="block">USER: ${userPick}</span><span class="block">COMPUTER: ${computerPick}</span></span>` + resultDiv.innerHTML;
             userScore++;

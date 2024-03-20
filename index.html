@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-US">
 
 <head>
     <meta charset="UTF-8" />
@@ -22,19 +22,19 @@
         <div id="game-container">
             <div class="picks-wrapper">
                 <input type="radio" id="user-rock" name="user-pick" value="ROCK">
-                <label for="user-rock">ROCK</label>
+                <label for="user-rock"  aria-label="rock">ROCK</label>
             </div>
             <div class="picks-wrapper">
                 <input type="radio" id="user-paper" name="user-pick" value="PAPER">
-                <label for="user-paper">PAPER</label>
+                <label for="user-paper" aria-label="paper">PAPER</label>
             </div>
             <div class="picks-wrapper">
                 <input type="radio" id="user-scissor" name="user-pick" value="SCISSOR">
-                <label for="user-scissor">SCISSOR</label>
+                <label for="user-scissor" aria-label="scissor">SCISSOR</label>
             </div>
             <div class="score-box">ROUND: <span id="round-count">0</span></div>
             <div class="score-box">SCORE: <span id="user-score">0</span></div>
-            <button id="submit">PLAY</button>
+            <button id="submit" aria-label="play">PLAY</button>
             <div id="result"></div>
         </div>
     </main>
