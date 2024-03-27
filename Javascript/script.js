@@ -24,9 +24,11 @@ document.addEventListener('DOMContentLoaded', () => {
             } else if (userScore < 0) {
                 resultDiv.innerText = "YOU LOSE!";
             }
-            submitButton.innerText = 'PLAY AGAIN';
             userScore = 0;
+            userScoreEl.innerText = 0;
             roundCount = 0;
+            roundCountEl.innerText = 0;
+            submitButton.innerText = 'PLAY AGAIN';
             clearContent();
             return;
         } else {
