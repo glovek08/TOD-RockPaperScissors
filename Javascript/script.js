@@ -1,9 +1,3 @@
-/* Store the user pick from amongst three options [DONE]*/
-/* Create a variable to store a randomly generated number within 1-3 that corresponds to the computer's pick [DONE]*/
-/* Create a function that takes both variables and compares them with the following logic: 
-    Rock > Scissors, Scissors > Paper, Paper > Rock [DONE]*/
-/* Reset the variables and radio inputs, and return the winning player [DONE]*/
-/*While I didn't explicitly follow the project's assignment, I added options using radio buttons in order to reduce computing and limit what the user can do.*/
 
 document.addEventListener('DOMContentLoaded', () => {
     const radioButtons = document.getElementsByName("user-pick");
